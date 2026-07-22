@@ -1,0 +1,45 @@
+{
+  "existing": {
+    "daily_post": {
+      "DAILY_POST00": {
+        "author": "s46",
+        "content": "s47",
+        "date": "s48",
+        "id": "DAILY_POST00",
+        "source": "s4a",
+        "title": "s4b",
+        "url": "s4c"
+      },
+      "DAILY_POST01": {
+        "author": "s8c",
+        "content": "s8d",
+        "date": "s8e",
+        "id": "DAILY_POST01",
+        "source": "s90",
+        "title": "s91",
+        "url": "s92"
+      },
+      "DAILY_POST02": {
+        "author": "sd2",
+        "content": "sd3",
+        "date": "sd4",
+        "id": "DAILY_POST02",
+        "source": "sd6",
+        "title": "sd7",
+        "url": "sd8"
+      }
+    }
+  },
+  "new": {
+    "daily_post": {
+      "daily_post_ref01": {
+        "author": "s118",
+        "content": "s119",
+        "date": "s11a",
+        "source": "s11c",
+        "title": "s11d",
+        "url": "s11e"
+      }
+    }
+  }
+}

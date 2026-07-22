@@ -1,0 +1,22 @@
+# BasicDailyPostFlow
+
+main: kit: flow: BasicDailyPostFlow:
+{
+  entity: "daily_post",
+  kind: "basic",
+  name: "BasicDailyPostFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "daily_post_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicDailyPostFlow"
+}

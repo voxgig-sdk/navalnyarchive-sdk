@@ -1,0 +1,25 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      auth: false
+      contact: {
+        url: "https://github.com/l0v3m0n3y/Navalnyarchive"
+      }
+      description: "This API provides access to the content from navalny.com, including blogs, social media, projects, and photographs associated with Alexei Navalny. It allows developers to programmatically interact with the stored content."
+      servers: [
+        {
+          description: "Production server"
+          url: "https://api-archive.navalny.com/api/v1"
+        }
+      ]
+      summary: "This API provides access to the content from navalny.com, including blogs, social media, projects, and photographs associated with Alexei Navalny."
+      title: "Navalnyarchive API"
+      version: "1.0.0"
+      website: "https://navalny.com"
+    }
+  }
+}
+

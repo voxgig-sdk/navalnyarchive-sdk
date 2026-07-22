@@ -1,0 +1,212 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Navalnyarchive API",
+    "description": "This API provides access to the content from navalny.com, including blogs, social media, projects, and photographs associated with Alexei Navalny. It allows developers to programmatically interact with the stored content.",
+    "version": "1.0.0",
+    "contact": {
+      "url": "https://github.com/l0v3m0n3y/Navalnyarchive"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://api-archive.navalny.com/api/v1",
+      "description": "Production server"
+    }
+  ],
+  "paths": {
+    "/ru/daily-posts/today/": {
+      "get": {
+        "summary": "Get daily posts today",
+        "description": "Retrieves the daily posts for today from the Navalny archive",
+        "operationId": "getDailyPostsToday",
+        "tags": [
+          "Daily Posts"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with daily posts",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "posts": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "description": "Unique identifier for the post"
+                          },
+                          "title": {
+                            "type": "string",
+                            "description": "Title of the post"
+                          },
+                          "content": {
+                            "type": "string",
+                            "description": "Content of the post"
+                          },
+                          "date": {
+                            "type": "string",
+                            "format": "date-time",
+                            "description": "Publication date of the post"
+                          },
+                          "author": {
+                            "type": "string",
+                            "description": "Author of the post"
+                          },
+                          "source": {
+                            "type": "string",
+                            "description": "Source platform (blog, social media, etc.)"
+                          },
+                          "url": {
+                            "type": "string",
+                            "format": "uri",
+                            "description": "Original URL of the post"
+                          }
+                        }
+                      }
+                    },
+                    "count": {
+                      "type": "integer",
+                      "description": "Total number of posts returned"
+                    },
+                    "date": {
+                      "type": "string",
+                      "format": "date",
+                      "description": "Date for which posts are retrieved"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "Error message"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "No posts found for today",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "Error message"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "description": "Error message"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Post": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier for the post"
+          },
+          "title": {
+            "type": "string",
+            "description": "Title of the post"
+          },
+          "content": {
+            "type": "string",
+            "description": "Content of the post"
+          },
+          "date": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Publication date of the post"
+          },
+          "author": {
+            "type": "string",
+            "description": "Author of the post"
+          },
+          "source": {
+            "type": "string",
+            "description": "Source platform (blog, social media, etc.)"
+          },
+          "url": {
+            "type": "string",
+            "format": "uri",
+            "description": "Original URL of the post"
+          }
+        }
+      },
+      "DailyPostsResponse": {
+        "type": "object",
+        "properties": {
+          "posts": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Post"
+            }
+          },
+          "count": {
+            "type": "integer",
+            "description": "Total number of posts returned"
+          },
+          "date": {
+            "type": "string",
+            "format": "date",
+            "description": "Date for which posts are retrieved"
+          }
+        }
+      },
+      "Error": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string",
+            "description": "Error message"
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Daily Posts",
+      "description": "Operations related to daily posts from the Navalny archive"
+    }
+  ]
+}
