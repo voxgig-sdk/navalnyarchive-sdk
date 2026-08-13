@@ -84,6 +84,7 @@ module NavalnyarchiveConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/ru/daily-posts/today/",
                   "parts" => [
@@ -96,7 +97,7 @@ module NavalnyarchiveConfig
                   },
                   "transform" => {
                     "req" => "`reqdata`",
-                    "res" => "`body`",
+                    "res" => "`body.posts`",
                   },
                   "index$" => 0,
                 },

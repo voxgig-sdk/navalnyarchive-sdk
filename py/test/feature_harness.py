@@ -14,12 +14,12 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from config import make_config
-from features import _make_feature
-from core.control import NavalnyarchiveControl
-from core.error import NavalnyarchiveError
-from core.result import NavalnyarchiveResult
-from core.spec import NavalnyarchiveSpec
+from navalnyarchive_sdk.config import make_config
+from navalnyarchive_sdk.features import _make_feature
+from navalnyarchive_sdk.core.control import NavalnyarchiveControl
+from navalnyarchive_sdk.core.error import NavalnyarchiveError
+from navalnyarchive_sdk.core.result import NavalnyarchiveResult
+from navalnyarchive_sdk.core.spec import NavalnyarchiveSpec
 
 
 # True when this SDK was generated with the named feature.

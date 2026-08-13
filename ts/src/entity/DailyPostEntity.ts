@@ -37,7 +37,7 @@ class DailyPostEntity extends NavalnyarchiveEntityBase<DailyPost> {
 
 
 
-  async list(this: any, reqmatch?: DailyPostListMatch, ctrl?: Control): Promise<DailyPost[]> {
+  async list(this: any, reqmatch?: DailyPostListMatch, ctrl?: Control): Promise<DailyPostEntity[]> {
 
     const utility = this._utility
 

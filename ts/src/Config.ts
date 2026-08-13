@@ -21,7 +21,7 @@ class Config {
 
 
   main = {
-    name: 'ProjectName',
+    name: 'Navalnyarchive',
   }
 
 
@@ -113,6 +113,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/ru/daily-posts/today/",
               "parts": [
@@ -125,7 +126,7 @@ class Config {
               },
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body`"
+                "res": "`body.posts`"
               },
               "index$": 0
             }

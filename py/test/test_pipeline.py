@@ -16,11 +16,11 @@
 import pytest
 
 from navalnyarchive_sdk import NavalnyarchiveSDK
-from core.error import NavalnyarchiveError
-from core.result import NavalnyarchiveResult
-from core.response import NavalnyarchiveResponse
-from core.spec import NavalnyarchiveSpec
-from feature.base_feature import NavalnyarchiveBaseFeature
+from navalnyarchive_sdk.core.error import NavalnyarchiveError
+from navalnyarchive_sdk.core.result import NavalnyarchiveResult
+from navalnyarchive_sdk.core.response import NavalnyarchiveResponse
+from navalnyarchive_sdk.core.spec import NavalnyarchiveSpec
+from navalnyarchive_sdk.feature.base_feature import NavalnyarchiveBaseFeature
 
 
 def _client():

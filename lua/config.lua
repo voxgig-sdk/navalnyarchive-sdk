@@ -83,6 +83,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/ru/daily-posts/today/",
                 ["parts"] = {
@@ -95,7 +96,7 @@ local function make_config()
                 },
                 ["transform"] = {
                   ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
+                  ["res"] = "`body.posts`",
                 },
                 ["index$"] = 0,
               },

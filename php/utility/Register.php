@@ -23,6 +23,7 @@ require_once __DIR__ . '/MakeUrl.php';
 require_once __DIR__ . '/Param.php';
 require_once __DIR__ . '/PrepareAuth.php';
 require_once __DIR__ . '/PrepareBody.php';
+require_once __DIR__ . '/Graphql.php';
 require_once __DIR__ . '/PrepareHeaders.php';
 require_once __DIR__ . '/PrepareMethod.php';
 require_once __DIR__ . '/PrepareParams.php';
@@ -59,6 +60,8 @@ NavalnyarchiveUtility::setRegistrar(function (NavalnyarchiveUtility $u): void {
     $u->prepare_params = [NavalnyarchivePrepareParams::class, 'call'];
     $u->prepare_path = [NavalnyarchivePreparePath::class, 'call'];
     $u->prepare_query = [NavalnyarchivePrepareQuery::class, 'call'];
+    $u->graphql_body = [NavalnyarchiveGraphql::class, 'body'];
+    $u->graphql_errors = [NavalnyarchiveGraphql::class, 'errors'];
     $u->result_basic = [NavalnyarchiveResultBasic::class, 'call'];
     $u->result_body = [NavalnyarchiveResultBody::class, 'call'];
     $u->result_headers = [NavalnyarchiveResultHeaders::class, 'call'];

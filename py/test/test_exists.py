@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# Navalnyarchive SDK exists test
 
 import pytest
 from navalnyarchive_sdk import NavalnyarchiveSDK

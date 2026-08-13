@@ -65,7 +65,7 @@ main: kit: entity: daily_post: {
           }
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.posts`"
           }
         }
       ]

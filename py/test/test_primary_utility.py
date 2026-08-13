@@ -6,15 +6,15 @@ import re
 
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from navalnyarchive_sdk.utility.voxgig_struct import voxgig_struct as vs
 from navalnyarchive_sdk import NavalnyarchiveSDK
-from core.spec import NavalnyarchiveSpec
-from core.result import NavalnyarchiveResult
-from core.response import NavalnyarchiveResponse
-from core.operation import NavalnyarchiveOperation
-from core.error import NavalnyarchiveError
-from core import helpers
-from feature.base_feature import NavalnyarchiveBaseFeature
+from navalnyarchive_sdk.core.spec import NavalnyarchiveSpec
+from navalnyarchive_sdk.core.result import NavalnyarchiveResult
+from navalnyarchive_sdk.core.response import NavalnyarchiveResponse
+from navalnyarchive_sdk.core.operation import NavalnyarchiveOperation
+from navalnyarchive_sdk.core.error import NavalnyarchiveError
+from navalnyarchive_sdk.core import helpers
+from navalnyarchive_sdk.feature.base_feature import NavalnyarchiveBaseFeature
 
 _TEST_DIR = os.path.dirname(os.path.abspath(__file__))
 
@@ -468,6 +468,10 @@ class TestPrimaryUtility:
             return {"status": 200, "statusText": "OK"}, None
 
         live_client = NavalnyarchiveSDK({
+            # Concrete base: a live construction must satisfy any server
+            # variables a templated base URL declares; a literal base
+            # sidesteps the requirement.
+            "base": "http://localhost:8080",
             "system": {
                 "fetch": mock_fetch,
             },
@@ -490,6 +494,7 @@ class TestPrimaryUtility:
             return {}, None
 
         blocked_client = NavalnyarchiveSDK({
+            "base": "http://localhost:8080",
             "system": {
                 "fetch": mock_fetch,
             },
@@ -945,28 +950,23 @@ class TestPrimaryUtility:
         _runset(_get_spec(primary, "prepareParams", "basic"), subject)
 
     def test_prepare_path_basic(self):
+        # Was two hand-written cases that had drifted out of the shared corpus
+        # (the preparePath fixture shipped as an empty `set: []`). Now driven
+        # by the corpus like every other section, so all ports assert the same
+        # separator / blank-segment behaviour.
+        spec = _load_test_spec()
+        primary = _get_spec(spec, "primary")
         client = NavalnyarchiveSDK.test(None, None)
         utility = client._utility
-        ctx = _make_test_full_ctx(client, utility)
-        ctx.point = {
-            "parts": ["api", "planet", "{id}"],
-            "args": {"params": []},
-        }
 
-        path = utility.prepare_path(ctx)
-        assert path == "api/planet/{id}"
+        def subject(entry):
+            ctxmap = entry.get("ctx")
+            if not isinstance(ctxmap, dict):
+                ctxmap = {}
+            ctx = _make_ctx_from_map(ctxmap, client, utility)
+            return utility.prepare_path(ctx), None
 
-    def test_prepare_path_single(self):
-        client = NavalnyarchiveSDK.test(None, None)
-        utility = client._utility
-        ctx = _make_test_full_ctx(client, utility)
-        ctx.point = {
-            "parts": ["items"],
-            "args": {"params": []},
-        }
-
-        path = utility.prepare_path(ctx)
-        assert path == "items"
+        _runset(_get_spec(primary, "preparePath", "basic"), subject)
 
     def test_prepare_query_basic(self):
         spec = _load_test_spec()

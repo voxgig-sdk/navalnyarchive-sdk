@@ -218,9 +218,9 @@ data **directly** — there is no wrapper:
 
 Check `err` first (it is non-`nil` on failure), then use `value`:
 
-    local daily_post, err = client:DailyPost():load()
+    local daily_post, err = client:DailyPost():list()
     if err then error(err) end
-    -- daily_post is the loaded record
+    -- daily_post is the record list
 
 Only `direct()` returns a response envelope — a `table` with `ok`,
 `status`, `headers`, and `data` keys.

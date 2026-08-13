@@ -35,7 +35,9 @@ const client = new NavalnyarchiveSDK()
 
 ### 2. List dailypost records
 
-`list()` resolves to an array of DailyPost objects — iterate it directly:
+`list()` resolves to an array of DailyPost ENTITIES — every operation
+resolves to entities, not raw records. Iterate them directly, and call
+`.data()` on one for the record it holds:
 
 ```ts
 const dailyposts = await client.DailyPost().list()
@@ -120,7 +122,8 @@ Create a mock client for unit testing — no server required:
 const client = NavalnyarchiveSDK.test()
 
 const dailypost = await client.DailyPost().list()
-// dailypost is a bare entity populated with mock response data
+// dailypost is the entity, populated with mock response data
+// — call dailypost.data() for the record itself
 console.log(dailypost)
 ```
 

@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from navalnyarchive_sdk.utility.voxgig_struct import voxgig_struct as vs
 from navalnyarchive_sdk import NavalnyarchiveSDK
-from core import helpers
+from navalnyarchive_sdk.core import helpers
 from test import runner
 
 

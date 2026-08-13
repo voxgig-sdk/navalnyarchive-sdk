@@ -63,7 +63,7 @@ describe('DailyPostEntity', async () => {
     const daily_post_ref01_ent = client.DailyPost()
     const daily_post_ref01_match: any = {}
 
-    const daily_post_ref01_list = await daily_post_ref01_ent.list(daily_post_ref01_match)
+    const daily_post_ref01_list = (await daily_post_ref01_ent.list(daily_post_ref01_match)).map((e: any) => e.data())
 
 
   })

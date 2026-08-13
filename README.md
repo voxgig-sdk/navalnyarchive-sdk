@@ -38,9 +38,18 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = NavalnyarchiveSDK.test()
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = NavalnyarchiveSDK.test({
+  entity: {
+    daily_post: {
+      test01: { id: 'test01' },
+    },
+  },
+})
 const dailyposts = await client.DailyPost().list()
-// dailyposts is an array of bare DailyPost records populated with mock data
+// dailyposts is an array of DailyPost entities, populated with mock data
+// — call dailyposts[0].data() for the record itself
 console.log(dailyposts)
 ```
 
@@ -110,7 +119,7 @@ import { NavalnyarchiveSDK } from '@voxgig-sdk/navalnyarchive'
 
 const client = new NavalnyarchiveSDK()
 
-// List all dailyposts (returns DailyPost[])
+// List all dailyposts (returns DailyPostEntity[] — .data() for the record)
 const dailyposts = await client.DailyPost().list()
 for (const dailypost of dailyposts) {
   console.log(dailypost)
@@ -343,6 +352,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://github.com/l0v3m0n3y/Navalnyarchive](https://github.com/l0v3m0n3y/Navalnyarchive)
 
