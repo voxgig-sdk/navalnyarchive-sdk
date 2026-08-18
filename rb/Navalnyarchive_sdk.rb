@@ -28,7 +28,7 @@ class NavalnyarchiveSDK
     utility = NavalnyarchiveUtility.new
     @_utility = utility
 
-    config = NavalnyarchiveConfig.make_config
+    config = NavalnyarchiveConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,

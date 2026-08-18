@@ -15,7 +15,7 @@ require_relative "../Navalnyarchive_sdk"
 module NavalnyarchiveFeatureHarness
   # True when this SDK was generated with the named feature.
   def self.has_feature?(name)
-    f = NavalnyarchiveConfig.make_config["feature"]
+    f = NavalnyarchiveConfig.shared_config["feature"]
     f.is_a?(Hash) && !f[name].nil?
   end
 

@@ -40,7 +40,7 @@ class NavalnyarchiveSDK
         $utility = new NavalnyarchiveUtility();
         $this->_utility = $utility;
 
-        $config = NavalnyarchiveConfig::make_config();
+        $config = NavalnyarchiveConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,
