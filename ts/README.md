@@ -9,7 +9,7 @@ The API is exposed as capitalised, semantic **Entities** — e.g.
 instead of raw URL paths and query parameters. This keeps the surface
 predictable and low-friction for both humans and AI agents.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go`, `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb` — see
 > the [top-level README](../README.md).
 
 
@@ -287,13 +287,13 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
-| `author` |  |
-| `content` |  |
-| `date` |  |
-| `id` |  |
-| `source` |  |
-| `title` |  |
-| `url` |  |
+| `author` | Author of the post |
+| `content` | Content of the post |
+| `date` | Publication date of the post |
+| `id` | Unique identifier for the post |
+| `source` | Source platform (blog, social media, etc.) |
+| `title` | Title of the post |
+| `url` | Original URL of the post |
 
 Operations: list.
 
@@ -318,13 +318,13 @@ Create an instance: `const daily_post = client.DailyPost()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `author` | `string` |  |
-| `content` | `string` |  |
-| `date` | `string` |  |
-| `id` | `string` |  |
-| `source` | `string` |  |
-| `title` | `string` |  |
-| `url` | `string` |  |
+| `author` | `string` | Author of the post |
+| `content` | `string` | Content of the post |
+| `date` | `string` | Publication date of the post |
+| `id` | `string` | Unique identifier for the post |
+| `source` | `string` | Source platform (blog, social media, etc.) |
+| `title` | `string` | Title of the post |
+| `url` | `string` | Original URL of the post |
 
 #### Example: List
 

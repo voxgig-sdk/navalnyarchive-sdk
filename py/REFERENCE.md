@@ -87,13 +87,13 @@ daily_post = client.DailyPost()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `author` | `str` | No |  |
-| `content` | `str` | No |  |
-| `date` | `str` | No |  |
-| `id` | `str` | No |  |
-| `source` | `str` | No |  |
-| `title` | `str` | No |  |
-| `url` | `str` | No |  |
+| `author` | `str` | No | Author of the post |
+| `content` | `str` | No | Content of the post |
+| `date` | `str` | No | Publication date of the post |
+| `id` | `str` | No | Unique identifier for the post |
+| `source` | `str` | No | Source platform (blog, social media, etc.) |
+| `title` | `str` | No | Title of the post |
+| `url` | `str` | No | Original URL of the post |
 
 ### Operations
 

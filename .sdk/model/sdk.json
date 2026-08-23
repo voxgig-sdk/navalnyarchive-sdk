@@ -36,42 +36,49 @@
               "active": true,
               "name": "author",
               "req": false,
+              "short": "Author of the post",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "content",
               "req": false,
+              "short": "Content of the post",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "date",
               "req": false,
+              "short": "Publication date of the post",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "id",
               "req": false,
+              "short": "Unique identifier for the post",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "source",
               "req": false,
+              "short": "Source platform (blog, social media, etc.)",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "title",
               "req": false,
+              "short": "Title of the post",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "url",
               "req": false,
+              "short": "Original URL of the post",
               "type": "`$STRING`"
             }
           ],

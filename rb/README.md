@@ -237,13 +237,13 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
-| `author` |  |
-| `content` |  |
-| `date` |  |
-| `id` |  |
-| `source` |  |
-| `title` |  |
-| `url` |  |
+| `author` | Author of the post |
+| `content` | Content of the post |
+| `date` | Publication date of the post |
+| `id` | Unique identifier for the post |
+| `source` | Source platform (blog, social media, etc.) |
+| `title` | Title of the post |
+| `url` | Original URL of the post |
 
 Operations: List.
 
@@ -268,13 +268,13 @@ Create an instance: `daily_post = client.DailyPost`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `author` | `String` |  |
-| `content` | `String` |  |
-| `date` | `String` |  |
-| `id` | `String` |  |
-| `source` | `String` |  |
-| `title` | `String` |  |
-| `url` | `String` |  |
+| `author` | `String` | Author of the post |
+| `content` | `String` | Content of the post |
+| `date` | `String` | Publication date of the post |
+| `id` | `String` | Unique identifier for the post |
+| `source` | `String` | Source platform (blog, social media, etc.) |
+| `title` | `String` | Title of the post |
+| `url` | `String` | Original URL of the post |
 
 #### Example: List
 

@@ -8,36 +8,43 @@ main: kit: entity: daily_post: {
     {
       name: "author"
       req: false
+      short: "Author of the post"
       type: "`$STRING`"
     }
     {
       name: "content"
       req: false
+      short: "Content of the post"
       type: "`$STRING`"
     }
     {
       name: "date"
       req: false
+      short: "Publication date of the post"
       type: "`$STRING`"
     }
     {
       name: "id"
       req: false
+      short: "Unique identifier for the post"
       type: "`$STRING`"
     }
     {
       name: "source"
       req: false
+      short: "Source platform (blog, social media, etc.)"
       type: "`$STRING`"
     }
     {
       name: "title"
       req: false
+      short: "Title of the post"
       type: "`$STRING`"
     }
     {
       name: "url"
       req: false
+      short: "Original URL of the post"
       type: "`$STRING`"
     }
   ]

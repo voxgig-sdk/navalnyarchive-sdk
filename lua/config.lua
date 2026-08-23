@@ -7,6 +7,9 @@ local function make_config()
   return {
     main = {
       name = "Navalnyarchive",
+      slug = "navalnyarchive",
+      version = "0.0.1",
+      target = "lua",
     },
     feature = {
       ["test"] = {
@@ -29,30 +32,37 @@ local function make_config()
         ["fields"] = {
           {
             ["name"] = "author",
+            ["short"] = "Author of the post",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "content",
+            ["short"] = "Content of the post",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "date",
+            ["short"] = "Publication date of the post",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "id",
+            ["short"] = "Unique identifier for the post",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "source",
+            ["short"] = "Source platform (blog, social media, etc.)",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "title",
+            ["short"] = "Title of the post",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "url",
+            ["short"] = "Original URL of the post",
             ["type"] = "`$STRING`",
           },
         },

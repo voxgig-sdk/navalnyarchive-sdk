@@ -247,13 +247,13 @@ On error, `ok` is `false` and `$err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `author` |  |
-| `content` |  |
-| `date` |  |
-| `id` |  |
-| `source` |  |
-| `title` |  |
-| `url` |  |
+| `author` | Author of the post |
+| `content` | Content of the post |
+| `date` | Publication date of the post |
+| `id` | Unique identifier for the post |
+| `source` | Source platform (blog, social media, etc.) |
+| `title` | Title of the post |
+| `url` | Original URL of the post |
 
 Operations: List.
 
@@ -278,13 +278,13 @@ Create an instance: `$daily_post = $client->DailyPost();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `author` | `string` |  |
-| `content` | `string` |  |
-| `date` | `string` |  |
-| `id` | `string` |  |
-| `source` | `string` |  |
-| `title` | `string` |  |
-| `url` | `string` |  |
+| `author` | `string` | Author of the post |
+| `content` | `string` | Content of the post |
+| `date` | `string` | Publication date of the post |
+| `id` | `string` | Unique identifier for the post |
+| `source` | `string` | Source platform (blog, social media, etc.) |
+| `title` | `string` | Title of the post |
+| `url` | `string` | Original URL of the post |
 
 #### Example: List
 

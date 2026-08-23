@@ -6,7 +6,7 @@ The Golang SDK for the Navalnyarchive API — an entity-oriented client using st
 
 It exposes the API as capitalised, semantic **Entities** — e.g. `client.DailyPost(nil)` — each with the same small set of operations (`List`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb`, `ts` — see
 > the [top-level README](../README.md).
 
 
@@ -260,13 +260,13 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 
 | Field | Description |
 | --- | --- |
-| `"author"` |  |
-| `"content"` |  |
-| `"date"` |  |
-| `"id"` |  |
-| `"source"` |  |
-| `"title"` |  |
-| `"url"` |  |
+| `"author"` | Author of the post |
+| `"content"` | Content of the post |
+| `"date"` | Publication date of the post |
+| `"id"` | Unique identifier for the post |
+| `"source"` | Source platform (blog, social media, etc.) |
+| `"title"` | Title of the post |
+| `"url"` | Original URL of the post |
 
 Operations: List.
 
@@ -291,13 +291,13 @@ Create an instance: `dailyPost := client.DailyPost(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `author` | `string` |  |
-| `content` | `string` |  |
-| `date` | `string` |  |
-| `id` | `string` |  |
-| `source` | `string` |  |
-| `title` | `string` |  |
-| `url` | `string` |  |
+| `author` | `string` | Author of the post |
+| `content` | `string` | Content of the post |
+| `date` | `string` | Publication date of the post |
+| `id` | `string` | Unique identifier for the post |
+| `source` | `string` | Source platform (blog, social media, etc.) |
+| `title` | `string` | Title of the post |
+| `url` | `string` | Original URL of the post |
 
 #### Example: List
 
