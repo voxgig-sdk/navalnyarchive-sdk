@@ -28,6 +28,7 @@ module NavalnyarchiveConfig
           "options" => {
             "active" => false,
           },
+          "transport" => "base",
         },
       },
       "options" => {

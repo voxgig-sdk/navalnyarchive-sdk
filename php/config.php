@@ -42,6 +42,7 @@ class NavalnyarchiveConfig
           'options' => [
             'active' => false,
           ],
+          'transport' => 'base',
         ],
             ],
             "options" => [
