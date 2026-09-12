@@ -1,6 +1,14 @@
 # Navalnyarchive SDK configuration
 
 
+# The sekreto plugin DEFINITIONS the model selected per feature, imported
+# above by name from the modules the catalogue's active `plugin.def`
+# entries declare. Handed to each feature (secrets builds its Sekreto
+# with them): a provider kind not listed here is unknown to that SDK.
+FEATURE_PLUGINS = {
+}
+
+
 _shared_config = None
 
 
@@ -63,6 +71,7 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "date-time",
             "name": "date",
             "short": "Publication date of the post",
             "type": "`$STRING`",
@@ -83,11 +92,16 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "uri",
             "name": "url",
             "short": "Original URL of the post",
             "type": "`$STRING`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "daily_post",
         "op": {
           "list": {
@@ -99,10 +113,16 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/ru/daily-posts/today/",
-                "parts": [
-                  "ru",
-                  "daily-posts",
-                  "today",
+                "segments": [
+                  {
+                    "lit": "ru",
+                  },
+                  {
+                    "lit": "daily-posts",
+                  },
+                  {
+                    "lit": "today",
+                  },
                 ],
                 "select": {
                   "$action": "today",
@@ -111,6 +131,11 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.posts`",
                 },
+                "parts": [
+                  "ru",
+                  "daily-posts",
+                  "today",
+                ],
               },
             ],
           },

@@ -68,6 +68,7 @@ class NavalnyarchiveConfig
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'date-time',
               'name' => 'date',
               'short' => 'Publication date of the post',
               'type' => '`$STRING`',
@@ -88,10 +89,15 @@ class NavalnyarchiveConfig
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'uri',
               'name' => 'url',
               'short' => 'Original URL of the post',
               'type' => '`$STRING`',
             ],
+          ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
           ],
           'name' => 'daily_post',
           'op' => [
@@ -104,10 +110,16 @@ class NavalnyarchiveConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/ru/daily-posts/today/',
-                  'parts' => [
-                    'ru',
-                    'daily-posts',
-                    'today',
+                  'segments' => [
+                    [
+                      'lit' => 'ru',
+                    ],
+                    [
+                      'lit' => 'daily-posts',
+                    ],
+                    [
+                      'lit' => 'today',
+                    ],
                   ],
                   'select' => [
                     '$action' => 'today',
@@ -115,6 +127,11 @@ class NavalnyarchiveConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body.posts`',
+                  ],
+                  'parts' => [
+                    'ru',
+                    'daily-posts',
+                    'today',
                   ],
                 ],
               ],

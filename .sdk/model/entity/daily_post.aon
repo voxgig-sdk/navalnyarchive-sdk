@@ -18,6 +18,7 @@ main: kit: entity: daily_post: {
       type: "`$STRING`"
     }
     {
+      format: "date-time"
       name: "date"
       req: false
       short: "Publication date of the post"
@@ -42,6 +43,7 @@ main: kit: entity: daily_post: {
       type: "`$STRING`"
     }
     {
+      format: "uri"
       name: "url"
       req: false
       short: "Original URL of the post"
@@ -62,10 +64,16 @@ main: kit: entity: daily_post: {
         {
           method: "GET"
           orig: "/ru/daily-posts/today/"
-          parts: [
-            "ru"
-            "daily-posts"
-            "today"
+          segments: [
+            {
+              lit: "ru"
+            }
+            {
+              lit: "daily-posts"
+            }
+            {
+              lit: "today"
+            }
           ]
           select: {
             "$action": "today"

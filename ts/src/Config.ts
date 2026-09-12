@@ -10,6 +10,17 @@ const FEATURE_CLASS: Record<string, typeof BaseFeature> = {
 }
 
 
+// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
+// the model's active plugin groups. A feature that takes a `plugins` option
+// (secrets over sekreto) reads its own entry; a feature with no plugins has
+// none. Named imports above make each definition statically reachable, so
+// an SDK carries exactly the plugin modules its model selects — the same
+// leanness the old side-effect registry imports bought, without a registry.
+const FEATURE_PLUGINS: Record<string, any[]> = {
+  
+}
+
+
 class Config {
 
   makeFeature(this: any, fn: string) {
@@ -77,6 +88,7 @@ class Config {
           "type": "`$STRING`"
         },
         {
+          "format": "date-time",
           "name": "date",
           "short": "Publication date of the post",
           "type": "`$STRING`"
@@ -97,11 +109,16 @@ class Config {
           "type": "`$STRING`"
         },
         {
+          "format": "uri",
           "name": "url",
           "short": "Original URL of the post",
           "type": "`$STRING`"
         }
       ],
+      "id": {
+        "field": "id",
+        "name": "id"
+      },
       "name": "daily_post",
       "op": {
         "list": {
@@ -113,10 +130,16 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/ru/daily-posts/today/",
-              "parts": [
-                "ru",
-                "daily-posts",
-                "today"
+              "segments": [
+                {
+                  "lit": "ru"
+                },
+                {
+                  "lit": "daily-posts"
+                },
+                {
+                  "lit": "today"
+                }
               ],
               "select": {
                 "$action": "today"
@@ -124,7 +147,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.posts`"
-              }
+              },
+              "parts": [
+                "ru",
+                "daily-posts",
+                "today"
+              ]
             }
           ]
         }
@@ -140,6 +168,7 @@ class Config {
 const config = new Config()
 
 export {
-  config
+  config,
+  FEATURE_PLUGINS,
 }
 
