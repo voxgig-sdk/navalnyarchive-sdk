@@ -105,7 +105,7 @@ local results, err = client:DailyPost():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/navalnyarchive` | publish pending — [install from git tag](https://github.com/voxgig-sdk/navalnyarchive-sdk/releases) |
+| TypeScript | `@voxgig-sdk/navalnyarchive-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/navalnyarchive-sdk/releases) |
 | Python | `voxgig-sdk-navalnyarchive` | publish pending — [install from git tag](https://github.com/voxgig-sdk/navalnyarchive-sdk/releases) |
 | PHP | `voxgig-sdk/navalnyarchive` | publish pending — [install from git tag](https://github.com/voxgig-sdk/navalnyarchive-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/navalnyarchive-sdk/go` | `go get github.com/voxgig-sdk/navalnyarchive-sdk/go@latest` |
@@ -119,7 +119,7 @@ local results, err = client:DailyPost():list()
 ### TypeScript
 
 ```ts
-import { NavalnyarchiveSDK } from '@voxgig-sdk/navalnyarchive'
+import { NavalnyarchiveSDK } from '@voxgig-sdk/navalnyarchive-sdk'
 
 const client = new NavalnyarchiveSDK()
 

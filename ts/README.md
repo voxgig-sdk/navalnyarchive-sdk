@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { NavalnyarchiveSDK } from '@voxgig-sdk/navalnyarchive'
+import { NavalnyarchiveSDK } from '@voxgig-sdk/navalnyarchive-sdk'
 
 const client = new NavalnyarchiveSDK()
 ```
@@ -415,7 +415,7 @@ navalnyarchive/
 Import the SDK from the package root:
 
 ```ts
-import { NavalnyarchiveSDK } from '@voxgig-sdk/navalnyarchive'
+import { NavalnyarchiveSDK } from '@voxgig-sdk/navalnyarchive-sdk'
 ```
 
 ### Entity state
