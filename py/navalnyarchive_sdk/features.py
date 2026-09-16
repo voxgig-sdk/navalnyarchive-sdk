@@ -1,12 +1,18 @@
 # Navalnyarchive SDK feature factory
 
 from navalnyarchive_sdk.feature.base_feature import NavalnyarchiveBaseFeature
+from navalnyarchive_sdk.feature.ratelimit_feature import NavalnyarchiveRatelimitFeature
+from navalnyarchive_sdk.feature.retry_feature import NavalnyarchiveRetryFeature
 from navalnyarchive_sdk.feature.test_feature import NavalnyarchiveTestFeature
+from navalnyarchive_sdk.feature.timeout_feature import NavalnyarchiveTimeoutFeature
 
 
 _FEATURES = {
     "base": lambda: NavalnyarchiveBaseFeature(),
+    "ratelimit": lambda: NavalnyarchiveRatelimitFeature(),
+    "retry": lambda: NavalnyarchiveRetryFeature(),
     "test": lambda: NavalnyarchiveTestFeature(),
+    "timeout": lambda: NavalnyarchiveTimeoutFeature(),
 }
 
 
