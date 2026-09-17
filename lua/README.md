@@ -43,7 +43,7 @@ local dailyposts, err = client:DailyPost():list()
 if err then error(err) end
 
 for _, item in ipairs(dailyposts) do
-  print(item["id"], item["author"])
+  print(item)
 end
 ```
 
@@ -231,13 +231,6 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 
 | Field | Description |
 | --- | --- |
-| `author` | Author of the post |
-| `content` | Content of the post |
-| `date` | Publication date of the post |
-| `id` | Unique identifier for the post |
-| `source` | Source platform (blog, social media, etc.) |
-| `title` | Title of the post |
-| `url` | Original URL of the post |
 
 Operations: List.
 
@@ -257,18 +250,6 @@ Create an instance: `local daily_post = client:DailyPost(nil)`
 | Method | Description |
 | --- | --- |
 | `list(match)` | List entities matching the criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `author` | `string` | Author of the post |
-| `content` | `string` | Content of the post |
-| `date` | `string` | Publication date of the post |
-| `id` | `string` | Unique identifier for the post |
-| `source` | `string` | Source platform (blog, social media, etc.) |
-| `title` | `string` | Title of the post |
-| `url` | `string` | Original URL of the post |
 
 #### Example: List
 
@@ -419,6 +400,7 @@ Use `helpers.to_map()` to safely validate that a value is a table.
 lua/
 ├── navalnyarchive_sdk.lua    -- Main SDK module
 ├── config.lua               -- Configuration
+├── schema.lua               -- Generated option + entity specs
 ├── features.lua             -- Feature factory
 ├── core/                    -- Core types and context
 ├── entity/                  -- Entity implementations

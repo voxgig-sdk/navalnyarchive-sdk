@@ -88,18 +88,6 @@ Prepare a fetch definition without sending the request. Returns the
 $daily_post = $client->DailyPost();
 ```
 
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `author` | `string` | No | Author of the post |
-| `content` | `string` | No | Content of the post |
-| `date` | `string` | No | Publication date of the post |
-| `id` | `string` | No | Unique identifier for the post |
-| `source` | `string` | No | Source platform (blog, social media, etc.) |
-| `title` | `string` | No | Title of the post |
-| `url` | `string` | No | Original URL of the post |
-
 ### Operations
 
 #### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`

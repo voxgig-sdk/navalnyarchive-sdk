@@ -83,18 +83,6 @@ Prepare a fetch definition without sending. Returns the `fetchdef` and raises on
 daily_post = client.DailyPost()
 ```
 
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `author` | `str` | No | Author of the post |
-| `content` | `str` | No | Content of the post |
-| `date` | `str` | No | Publication date of the post |
-| `id` | `str` | No | Unique identifier for the post |
-| `source` | `str` | No | Source platform (blog, social media, etc.) |
-| `title` | `str` | No | Title of the post |
-| `url` | `str` | No | Original URL of the post |
-
 ### Operations
 
 #### `list(reqmatch=None, ctrl=None) -> list`

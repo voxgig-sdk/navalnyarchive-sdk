@@ -15,24 +15,10 @@ declare(strict_types=1);
 /** DailyPost entity data model. */
 class DailyPost
 {
-    public ?string $author = null;
-    public ?string $content = null;
-    public ?string $date = null;
-    public ?string $id = null;
-    public ?string $source = null;
-    public ?string $title = null;
-    public ?string $url = null;
 }
 
 /** Request payload for DailyPost#list. */
 class DailyPostListMatch
 {
-    public ?string $author = null;
-    public ?string $content = null;
-    public ?string $date = null;
-    public ?string $id = null;
-    public ?string $source = null;
-    public ?string $title = null;
-    public ?string $url = null;
 }
 

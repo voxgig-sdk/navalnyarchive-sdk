@@ -37,7 +37,7 @@ begin
   # list returns an Array of DailyPost records — iterate directly.
   dailyposts = client.DailyPost.list
   dailyposts.each do |item|
-    puts "#{item["id"]} #{item["author"]}"
+    puts "#{item}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -237,13 +237,6 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
-| `author` | Author of the post |
-| `content` | Content of the post |
-| `date` | Publication date of the post |
-| `id` | Unique identifier for the post |
-| `source` | Source platform (blog, social media, etc.) |
-| `title` | Title of the post |
-| `url` | Original URL of the post |
 
 Operations: List.
 
@@ -263,18 +256,6 @@ Create an instance: `daily_post = client.DailyPost`
 | Method | Description |
 | --- | --- |
 | `list(match)` | List entities matching the criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `author` | `String` | Author of the post |
-| `content` | `String` | Content of the post |
-| `date` | `String` | Publication date of the post |
-| `id` | `String` | Unique identifier for the post |
-| `source` | `String` | Source platform (blog, social media, etc.) |
-| `title` | `String` | Title of the post |
-| `url` | `String` | Original URL of the post |
 
 #### Example: List
 
@@ -426,6 +407,7 @@ Use `Helpers.to_map()` to safely validate that a value is a hash.
 rb/
 ├── Navalnyarchive_sdk.rb       -- Main SDK module
 ├── config.rb                  -- Configuration
+├── schema.rb                  -- Generated option + entity specs
 ├── features.rb                -- Feature factory
 ├── core/                      -- Core types and context
 ├── entity/                    -- Entity implementations

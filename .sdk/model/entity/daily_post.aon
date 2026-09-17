@@ -4,58 +4,6 @@ main: kit: entity: daily_post: {
 
   alias: field: {}
 
-  fields: [
-    {
-      name: "author"
-      req: false
-      short: "Author of the post"
-      type: "`$STRING`"
-    }
-    {
-      name: "content"
-      req: false
-      short: "Content of the post"
-      type: "`$STRING`"
-    }
-    {
-      format: "date-time"
-      name: "date"
-      req: false
-      short: "Publication date of the post"
-      type: "`$STRING`"
-    }
-    {
-      name: "id"
-      req: false
-      short: "Unique identifier for the post"
-      type: "`$STRING`"
-    }
-    {
-      name: "source"
-      req: false
-      short: "Source platform (blog, social media, etc.)"
-      type: "`$STRING`"
-    }
-    {
-      name: "title"
-      req: false
-      short: "Title of the post"
-      type: "`$STRING`"
-    }
-    {
-      format: "uri"
-      name: "url"
-      req: false
-      short: "Original URL of the post"
-      type: "`$STRING`"
-    }
-  ]
-
-  id: {
-    field: "id"
-    name: "id"
-  }
-
   name: "daily_post"
   op: {
     list: {

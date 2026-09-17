@@ -84,49 +84,7 @@ local function make_config()
     },
     entity = {
       ["daily_post"] = {
-        ["fields"] = {
-          {
-            ["name"] = "author",
-            ["short"] = "Author of the post",
-            ["type"] = "`$STRING`",
-          },
-          {
-            ["name"] = "content",
-            ["short"] = "Content of the post",
-            ["type"] = "`$STRING`",
-          },
-          {
-            ["format"] = "date-time",
-            ["name"] = "date",
-            ["short"] = "Publication date of the post",
-            ["type"] = "`$STRING`",
-          },
-          {
-            ["name"] = "id",
-            ["short"] = "Unique identifier for the post",
-            ["type"] = "`$STRING`",
-          },
-          {
-            ["name"] = "source",
-            ["short"] = "Source platform (blog, social media, etc.)",
-            ["type"] = "`$STRING`",
-          },
-          {
-            ["name"] = "title",
-            ["short"] = "Title of the post",
-            ["type"] = "`$STRING`",
-          },
-          {
-            ["format"] = "uri",
-            ["name"] = "url",
-            ["short"] = "Original URL of the post",
-            ["type"] = "`$STRING`",
-          },
-        },
-        ["id"] = {
-          ["field"] = "id",
-          ["name"] = "id",
-        },
+        ["fields"] = {},
         ["name"] = "daily_post",
         ["op"] = {
           ["list"] = {

@@ -88,49 +88,7 @@ func MakeConfig() map[string]any {
 		},
 		"entity": map[string]any{
 			"daily_post": map[string]any{
-				"fields": []any{
-					map[string]any{
-						"name": "author",
-						"short": "Author of the post",
-						"type": "`$STRING`",
-					},
-					map[string]any{
-						"name": "content",
-						"short": "Content of the post",
-						"type": "`$STRING`",
-					},
-					map[string]any{
-						"format": "date-time",
-						"name": "date",
-						"short": "Publication date of the post",
-						"type": "`$STRING`",
-					},
-					map[string]any{
-						"name": "id",
-						"short": "Unique identifier for the post",
-						"type": "`$STRING`",
-					},
-					map[string]any{
-						"name": "source",
-						"short": "Source platform (blog, social media, etc.)",
-						"type": "`$STRING`",
-					},
-					map[string]any{
-						"name": "title",
-						"short": "Title of the post",
-						"type": "`$STRING`",
-					},
-					map[string]any{
-						"format": "uri",
-						"name": "url",
-						"short": "Original URL of the post",
-						"type": "`$STRING`",
-					},
-				},
-				"id": map[string]any{
-					"field": "id",
-					"name": "id",
-				},
+				"fields": []any{},
 				"name": "daily_post",
 				"op": map[string]any{
 					"list": map[string]any{

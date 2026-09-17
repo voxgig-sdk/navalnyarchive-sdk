@@ -39,7 +39,7 @@ try {
     $dailyposts = $client->DailyPost()->list();
     foreach ($dailyposts as $record) {
         $item = $record->data_get();
-        echo $item["id"] . " " . $item["author"] . "\n";
+        echo json_encode($item) . "\n";
     }
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
@@ -248,13 +248,6 @@ On error, `ok` is `false` and `$err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `author` | Author of the post |
-| `content` | Content of the post |
-| `date` | Publication date of the post |
-| `id` | Unique identifier for the post |
-| `source` | Source platform (blog, social media, etc.) |
-| `title` | Title of the post |
-| `url` | Original URL of the post |
 
 Operations: List.
 
@@ -274,18 +267,6 @@ Create an instance: `$daily_post = $client->DailyPost();`
 | Method | Description |
 | --- | --- |
 | `list(match)` | List entities matching the criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `author` | `string` | Author of the post |
-| `content` | `string` | Content of the post |
-| `date` | `string` | Publication date of the post |
-| `id` | `string` | Unique identifier for the post |
-| `source` | `string` | Source platform (blog, social media, etc.) |
-| `title` | `string` | Title of the post |
-| `url` | `string` | Original URL of the post |
 
 #### Example: List
 
@@ -437,6 +418,7 @@ Use `Helpers::to_map()` to safely validate that a value is an array.
 php/
 ├── navalnyarchive_sdk.php          -- Main SDK class
 ├── config.php                     -- Configuration
+├── schema.php                     -- Generated option + entity specs
 ├── features.php                   -- Feature factory
 ├── core/                          -- Core types and context
 ├── entity/                        -- Entity implementations

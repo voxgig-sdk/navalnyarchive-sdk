@@ -105,12 +105,12 @@ local results, err = client:DailyPost():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/navalnyarchive-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/navalnyarchive-sdk/releases) |
-| Python | `voxgig-sdk-navalnyarchive` | publish pending — [install from git tag](https://github.com/voxgig-sdk/navalnyarchive-sdk/releases) |
-| PHP | `voxgig-sdk/navalnyarchive` | publish pending — [install from git tag](https://github.com/voxgig-sdk/navalnyarchive-sdk/releases) |
+| TypeScript | `@voxgig-sdk/navalnyarchive-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/navalnyarchive-sdk/tags) |
+| Python | `voxgig-sdk-navalnyarchive` | publish pending — [install from git tag](https://github.com/voxgig-sdk/navalnyarchive-sdk/tags) |
+| PHP | `voxgig-sdk/navalnyarchive` | publish pending — [install from git tag](https://github.com/voxgig-sdk/navalnyarchive-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/navalnyarchive-sdk/go` | `go get github.com/voxgig-sdk/navalnyarchive-sdk/go@latest` |
-| Ruby | `voxgig-sdk-navalnyarchive` | publish pending — [install from git tag](https://github.com/voxgig-sdk/navalnyarchive-sdk/releases) |
-| Lua | `voxgig-sdk-navalnyarchive` | publish pending — [install from git tag](https://github.com/voxgig-sdk/navalnyarchive-sdk/releases) |
+| Ruby | `voxgig-sdk-navalnyarchive` | publish pending — [install from git tag](https://github.com/voxgig-sdk/navalnyarchive-sdk/tags) |
+| Lua | `voxgig-sdk-navalnyarchive` | publish pending — [install from git tag](https://github.com/voxgig-sdk/navalnyarchive-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/navalnyarchive-sdk/go-cli` | `go install github.com/voxgig-sdk/navalnyarchive-sdk/go-cli/cmd/navalnyarchive@latest` |
 | Go MCP server | `github.com/voxgig-sdk/navalnyarchive-sdk/go-mcp` | `go get github.com/voxgig-sdk/navalnyarchive-sdk/go-mcp@latest` |
 

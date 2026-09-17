@@ -16,21 +16,9 @@ from __future__ import annotations
 from typing import TypedDict, Any
 
 
-class DailyPost(TypedDict, total=False):
-    author: str
-    content: str
-    date: str
-    id: str
-    source: str
-    title: str
-    url: str
+class DailyPost(TypedDict):
+    pass
 
 
-class DailyPostListMatch(TypedDict, total=False):
-    author: str
-    content: str
-    date: str
-    id: str
-    source: str
-    title: str
-    url: str
+class DailyPostListMatch(TypedDict):
+    pass

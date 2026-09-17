@@ -243,13 +243,6 @@ On error, `ok` is `False` and `err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `author` | Author of the post |
-| `content` | Content of the post |
-| `date` | Publication date of the post |
-| `id` | Unique identifier for the post |
-| `source` | Source platform (blog, social media, etc.) |
-| `title` | Title of the post |
-| `url` | Original URL of the post |
 
 Operations: List.
 
@@ -269,18 +262,6 @@ Create an instance: `daily_post = client.DailyPost()`
 | Method | Description |
 | --- | --- |
 | `list()` | List entities, optionally matching the given criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `author` | `str` | Author of the post |
-| `content` | `str` | Content of the post |
-| `date` | `str` | Publication date of the post |
-| `id` | `str` | Unique identifier for the post |
-| `source` | `str` | Source platform (blog, social media, etc.) |
-| `title` | `str` | Title of the post |
-| `url` | `str` | Original URL of the post |
 
 #### Example: List
 
@@ -431,6 +412,7 @@ Use `helpers.to_map()` to safely validate that a value is a dict.
 py/
 ├── navalnyarchive_sdk.py         -- Main SDK module
 ├── config.py                    -- Configuration
+├── schema.py                    -- Generated option + entity specs
 ├── features.py                  -- Feature factory
 ├── core/                        -- Core types and context
 ├── entity/                      -- Entity implementations

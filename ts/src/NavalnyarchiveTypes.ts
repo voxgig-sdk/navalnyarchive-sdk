@@ -6,23 +6,9 @@
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 
 export interface DailyPost {
-  author?: string
-  content?: string
-  date?: string
-  id?: string
-  source?: string
-  title?: string
-  url?: string
 }
 
 export interface DailyPostListMatch {
-  author?: string
-  content?: string
-  date?: string
-  id?: string
-  source?: string
-  title?: string
-  url?: string
 
   // Selects a custom action instead of the plain list:
   //   'today'

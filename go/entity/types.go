@@ -14,24 +14,10 @@ import (
 
 // DailyPost is the typed data model for the daily_post entity.
 type DailyPost struct {
-	Author *string `json:"author,omitempty"`
-	Content *string `json:"content,omitempty"`
-	Date *string `json:"date,omitempty"`
-	Id *string `json:"id,omitempty"`
-	Source *string `json:"source,omitempty"`
-	Title *string `json:"title,omitempty"`
-	Url *string `json:"url,omitempty"`
 }
 
 // DailyPostListMatch is the typed request payload for DailyPost.ListTyped.
 type DailyPostListMatch struct {
-	Author *string `json:"author,omitempty"`
-	Content *string `json:"content,omitempty"`
-	Date *string `json:"date,omitempty"`
-	Id *string `json:"id,omitempty"`
-	Source *string `json:"source,omitempty"`
-	Title *string `json:"title,omitempty"`
-	Url *string `json:"url,omitempty"`
 }
 
 // asMap turns a typed request/data struct into the map[string]any the

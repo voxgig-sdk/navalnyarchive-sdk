@@ -94,18 +94,6 @@ dailyPost := client.DailyPost(nil)
 fmt.Println(dailyPost.GetName()) // "daily_post"
 ```
 
-### Fields
-
-| Field | Type | Required | Description |
-| --- | --- | --- | --- |
-| `author` | `string` | No | Author of the post |
-| `content` | `string` | No | Content of the post |
-| `date` | `string` | No | Publication date of the post |
-| `id` | `string` | No | Unique identifier for the post |
-| `source` | `string` | No | Source platform (blog, social media, etc.) |
-| `title` | `string` | No | Title of the post |
-| `url` | `string` | No | Original URL of the post |
-
 ### Operations
 
 #### `List(reqmatch, ctrl map[string]any) (any, error)`

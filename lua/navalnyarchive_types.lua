@@ -7,22 +7,8 @@
 -- edit by hand.
 
 ---@class DailyPost
----@field author? string
----@field content? string
----@field date? string
----@field id? string
----@field source? string
----@field title? string
----@field url? string
 
 ---@class DailyPostListMatch
----@field author? string
----@field content? string
----@field date? string
----@field id? string
----@field source? string
----@field title? string
----@field url? string
 
 local M = {}
 

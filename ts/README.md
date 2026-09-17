@@ -146,7 +146,7 @@ await entity.list()
 
 // Subsequent calls reuse the stored state
 const data = entity.data()
-console.log(data.id)
+console.log(data)
 ```
 
 ### Add custom middleware
@@ -292,13 +292,6 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
-| `author` | Author of the post |
-| `content` | Content of the post |
-| `date` | Publication date of the post |
-| `id` | Unique identifier for the post |
-| `source` | Source platform (blog, social media, etc.) |
-| `title` | Title of the post |
-| `url` | Original URL of the post |
 
 Operations: list.
 
@@ -318,18 +311,6 @@ Create an instance: `const daily_post = client.DailyPost()`
 | Method | Description |
 | --- | --- |
 | `list(match)` | List entities matching the criteria. |
-
-#### Fields
-
-| Field | Type | Description |
-| --- | --- | --- |
-| `author` | `string` | Author of the post |
-| `content` | `string` | Content of the post |
-| `date` | `string` | Publication date of the post |
-| `id` | `string` | Unique identifier for the post |
-| `source` | `string` | Source platform (blog, social media, etc.) |
-| `title` | `string` | Title of the post |
-| `url` | `string` | Original URL of the post |
 
 #### Example: List
 

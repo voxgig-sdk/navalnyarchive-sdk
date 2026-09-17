@@ -9,68 +9,10 @@
 # annotations document the shapes. Do not edit by hand.
 
 # DailyPost entity data model.
-#
-# @!attribute [rw] author
-#   @return [String, nil]
-#
-# @!attribute [rw] content
-#   @return [String, nil]
-#
-# @!attribute [rw] date
-#   @return [String, nil]
-#
-# @!attribute [rw] id
-#   @return [String, nil]
-#
-# @!attribute [rw] source
-#   @return [String, nil]
-#
-# @!attribute [rw] title
-#   @return [String, nil]
-#
-# @!attribute [rw] url
-#   @return [String, nil]
-DailyPost = Struct.new(
-  :author,
-  :content,
-  :date,
-  :id,
-  :source,
-  :title,
-  :url,
-  keyword_init: true
-)
+class DailyPost
+end
 
 # Request payload for DailyPost#list.
-#
-# @!attribute [rw] author
-#   @return [String, nil]
-#
-# @!attribute [rw] content
-#   @return [String, nil]
-#
-# @!attribute [rw] date
-#   @return [String, nil]
-#
-# @!attribute [rw] id
-#   @return [String, nil]
-#
-# @!attribute [rw] source
-#   @return [String, nil]
-#
-# @!attribute [rw] title
-#   @return [String, nil]
-#
-# @!attribute [rw] url
-#   @return [String, nil]
-DailyPostListMatch = Struct.new(
-  :author,
-  :content,
-  :date,
-  :id,
-  :source,
-  :title,
-  :url,
-  keyword_init: true
-)
+class DailyPostListMatch
+end
 
