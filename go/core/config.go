@@ -96,7 +96,6 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/ru/daily-posts/today/",
@@ -111,17 +110,19 @@ func MakeConfig() map[string]any {
 										"lit": "today",
 									},
 								},
-								"select": map[string]any{
-									"$action": "today",
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body.posts`",
-								},
 								"parts": []any{
 									"ru",
 									"daily-posts",
 									"today",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body.posts`",
+								},
+								"args": map[string]any{},
+								"select": map[string]any{
+									"$action": "today",
 								},
 							},
 						},

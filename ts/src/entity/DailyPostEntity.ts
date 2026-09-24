@@ -19,7 +19,6 @@ import type {
   DailyPostListMatch,
 } from '../NavalnyarchiveTypes'
 
-// TODO: needs Entity superclass
 class DailyPostEntity extends NavalnyarchiveEntityBase<DailyPost> {
 
   constructor(client: NavalnyarchiveSDK, entopts: any) {

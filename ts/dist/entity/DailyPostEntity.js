@@ -2,7 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.DailyPostEntity = void 0;
 const NavalnyarchiveEntityBase_1 = require("../NavalnyarchiveEntityBase");
-// TODO: needs Entity superclass
 class DailyPostEntity extends NavalnyarchiveEntityBase_1.NavalnyarchiveEntityBase {
     constructor(client, entopts) {
         super(client, entopts);

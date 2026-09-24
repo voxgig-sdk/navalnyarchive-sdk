@@ -104,7 +104,6 @@ module NavalnyarchiveConfig
               "name" => "list",
               "points" => [
                 {
-                  "args" => {},
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/ru/daily-posts/today/",
@@ -119,18 +118,20 @@ module NavalnyarchiveConfig
                       "lit" => "today",
                     },
                   ],
-                  "select" => {
-                    "$action" => "today",
-                  },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body.posts`",
-                  },
                   "parts" => [
                     "ru",
                     "daily-posts",
                     "today",
                   ],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body.posts`",
+                  },
+                  "args" => {},
+                  "select" => {
+                    "$action" => "today",
+                  },
                 },
               ],
             },

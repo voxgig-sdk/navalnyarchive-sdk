@@ -1,0 +1,48 @@
+# Entity: daily_post
+
+main: kit: entity: daily_post: {
+
+  alias: field: {}
+
+  name: "daily_post"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /ru/daily-posts/today/"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/ru/daily-posts/today/"
+          q: {
+            "$action": "today"
+          }
+          s: [
+            {
+              lit: "ru"
+            }
+            {
+              lit: "daily-posts"
+            }
+            {
+              lit: "today"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.posts`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+
+}
