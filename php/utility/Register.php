@@ -37,6 +37,8 @@ require_once __DIR__ . '/TransformResponse.php';
 
 NavalnyarchiveUtility::setRegistrar(function (NavalnyarchiveUtility $u): void {
     $u->clean = [NavalnyarchiveClean::class, 'call'];
+    $u->clean_add = [NavalnyarchiveClean::class, 'add'];
+    $u->clean_explain = [NavalnyarchiveDone::class, 'clean_explain'];
     $u->done = [NavalnyarchiveDone::class, 'call'];
     $u->make_error = [NavalnyarchiveMakeError::class, 'call'];
     $u->feature_add = [NavalnyarchiveFeatureAdd::class, 'call'];

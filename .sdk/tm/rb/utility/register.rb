@@ -33,6 +33,8 @@ require_relative 'transform_response'
 
 NavalnyarchiveUtility.registrar = ->(u) {
   u.clean = NavalnyarchiveUtilities::Clean
+  u.clean_add = NavalnyarchiveUtilities::CleanAdd
+  u.clean_explain = NavalnyarchiveUtilities::CleanExplain
   u.done = NavalnyarchiveUtilities::Done
   u.make_error = NavalnyarchiveUtilities::MakeError
   u.feature_add = NavalnyarchiveUtilities::FeatureAdd
