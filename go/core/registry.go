@@ -12,5 +12,5 @@ var NewTestFeatureFunc func() Feature
 
 var NewTimeoutFeatureFunc func() Feature
 
-var NewDailyPostEntityFunc func(client *NavalnyarchiveSDK, entopts map[string]any) NavalnyarchiveEntity
+var NewDailyPostEntityFunc func(client *NavalnyarchiveSDK, entopts map[string]any) NavalnyarchiveEntityBase
 

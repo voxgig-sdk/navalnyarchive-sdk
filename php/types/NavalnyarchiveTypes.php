@@ -17,8 +17,8 @@ class DailyPost
 {
 }
 
-/** Request payload for DailyPost#list. */
-class DailyPostListMatch
+/** Request payload for DailyPost#load. */
+class DailyPostLoadMatch
 {
 }
 

@@ -16,8 +16,8 @@ import (
 type DailyPost struct {
 }
 
-// DailyPostListMatch is the typed request payload for DailyPost.ListTyped.
-type DailyPostListMatch struct {
+// DailyPostLoadMatch is the typed request payload for DailyPost.LoadTyped.
+type DailyPostLoadMatch struct {
 }
 
 // asMap turns a typed request/data struct into the map[string]any the

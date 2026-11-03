@@ -3,5 +3,12 @@
     "SUMMARY.md"
   ],
   "config": ".sdk/doc/qa/vale.ini",
-  "routes": {}
+  "routes": {},
+  "quoted": {
+    "SUMMARY.md": [
+      "Production server",
+      "Successful response with daily posts",
+      "This API provides access to the content from navalny.com, including blogs, social media, projects, and photographs associated with Alexei Navalny. It allows developers to programmatically interact with the stored content. Response schema rewritten 2026-11-03 from a live probe: /ru/daily-posts/today/ answers one object &#123;date, editorial, material&#125;, not the &#123;count, date, posts&#125; list the earlier schema declared. Item shapes of tags, people, places and `related_materials` are unverified (empty when probed)."
+    ]
+  }
 }

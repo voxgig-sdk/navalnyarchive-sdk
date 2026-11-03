@@ -11,8 +11,7 @@ guide: {
   entity: daily_post: {
     path: "/ru/daily-posts/today/": {
       action: "today": {}
-      op: list: method: *GET
-      op: list: transform: res: *("`body.posts`")|top
+      op: load: method: *GET
     }
   }
 

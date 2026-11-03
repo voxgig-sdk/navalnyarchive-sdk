@@ -85,14 +85,12 @@ daily_post = client.DailyPost()
 
 ### Operations
 
-#### `list(reqmatch=None, ctrl=None) -> list`
+#### `load(reqmatch, ctrl=None) -> DailyPostEntity`
 
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
 
 ```python
-results = client.DailyPost().list()
-for daily_post in results:
-    print(daily_post)
+result = client.DailyPost().load()
 ```
 
 ### Common Methods
@@ -281,6 +279,7 @@ Timeout.
 | Option | Type |
 |---|---|
 | `clearTimer` | function |
+| `now` | function |
 | `setTimer` | function |
 
 These take no default: the feature behaves one way when you supply them and

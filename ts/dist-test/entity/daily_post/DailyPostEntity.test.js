@@ -56,25 +56,31 @@ const utility_1 = require("../../utility");
     });
     (0, node_test_1.test)('basic', async (t) => {
         const live = 'TRUE' === process.env.NAVALNYARCHIVE_TEST_LIVE;
-        for (const op of ['list']) {
+        for (const op of ['load']) {
             if (!live && (0, utility_1.maybeSkipControl)(t, 'entityOp', 'daily_post.' + op, live))
                 return;
         }
         const setup = basicSetup();
         if (setup.live) {
-            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": {}, "name": "daily_post", "op": { "list": { "input": "data", "name": "list", "points": [{ "a": true, "co": { "id": "GET /ru/daily-posts/today/", "source": "openapi3", "version": 2 }, "g": {}, "k": "http", "m": "GET", "o": "/ru/daily-posts/today/", "q": { "$action": "today" }, "r": {}, "s": [{ "lit": "ru" }, { "lit": "daily-posts" }, { "lit": "today" }], "t": { "req": "`reqdata`", "res": "`body.posts`" }, "index$": 0 }], "key$": "list" } }, "relations": { "ancestors": [] }, "key$": "daily_post", "name__orig": "daily_post", "Name": "DailyPost", "name_": "daily_post", "name-": "daily-post", "NAME": "DAILY_POST", "index$": 0 }, { "active": true, "entity": "daily_post", "key$": "BasicDailyPostFlow", "kind": "basic", "name": "BasicDailyPostFlow", "param": {}, "step": [{ "a": true, "d": {}, "i": {}, "m": {}, "o": "list", "s": [], "v": [{ "apply": "ItemExists", "def": { "ref": "daily_post_ref01" } }], "index$": 0 }] }, 'DailyPost', { "GET /ru/daily-posts/today/": { "protocol": "http", "parameters": [] } });
+            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": {}, "name": "daily_post", "op": { "load": { "input": "data", "name": "load", "points": [{ "a": true, "co": { "id": "GET /ru/daily-posts/today/", "source": "openapi3", "version": 2 }, "g": {}, "k": "http", "m": "GET", "o": "/ru/daily-posts/today/", "q": { "$action": "today" }, "r": {}, "rs": { "kind": "json", "media": "application/json" }, "s": [{ "lit": "ru" }, { "lit": "daily-posts" }, { "lit": "today" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "load" } }, "relations": { "ancestors": [] }, "key$": "daily_post", "name__orig": "daily_post", "Name": "DailyPost", "name_": "daily_post", "name-": "daily-post", "NAME": "DAILY_POST", "index$": 0 }, { "active": true, "entity": "daily_post", "key$": "BasicDailyPostFlow", "kind": "basic", "name": "BasicDailyPostFlow", "param": {}, "step": [{ "a": true, "d": {}, "i": { "ref": "daily_post_ref01", "srcdatavar": "daily_post_ref01_data", "suffix": "_dt0" }, "m": {}, "o": "load", "s": [], "v": [{ "apply": "TextFieldMark", "def": { "mark": "Mark01-daily_post_ref01" } }], "index$": 0 }] }, 'DailyPost', { "GET /ru/daily-posts/today/": { "protocol": "http", "parameters": [] } }, { strict: LIVE_STRICT, t });
         }
         const client = setup.client;
         const struct = setup.struct;
         const isempty = struct.isempty;
         const select = struct.select;
         let daily_post_ref01_data = Object.values(setup.data.existing.daily_post)[0];
-        // LIST
+        // LOAD
         const daily_post_ref01_ent = client.DailyPost();
-        const daily_post_ref01_match = {};
-        const daily_post_ref01_list = (await daily_post_ref01_ent.list(daily_post_ref01_match)).map((e) => e.data());
+        const daily_post_ref01_match_dt0 = {};
+        const daily_post_ref01_data_dt0 = (await daily_post_ref01_ent.load(daily_post_ref01_match_dt0)).data();
+        (0, node_assert_1.default)(null != daily_post_ref01_data_dt0);
     });
 });
+// main.kit.test.live.strict is true (the default is true): a live
+// request that fails, or a live test missing an input it needs,
+// fails the test.
+// An account with no record for a test to read skips it either way.
+const LIVE_STRICT = true;
 function basicSetup(extra) {
     // TODO: fix test def options
     const options = {}; // null

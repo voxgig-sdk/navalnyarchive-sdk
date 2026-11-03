@@ -7,12 +7,18 @@ main: kit: flow: BasicDailyPostFlow:
   name: "BasicDailyPostFlow",
   step: [
     {
-      o: "list",
+      i: {
+        ref: "daily_post_ref01",
+        srcdatavar: "daily_post_ref01_data",
+        suffix: "_dt0"
+      }
+
+      o: "load",
       v: [
         {
-          apply: "ItemExists",
+          apply: "TextFieldMark",
           def: {
-            ref: "daily_post_ref01"
+            mark: "Mark01-daily_post_ref01"
           }
         }
       ]

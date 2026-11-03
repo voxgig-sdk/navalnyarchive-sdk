@@ -8,6 +8,13 @@ local runner = require("test.runner")
 
 local _test_dir = debug.getinfo(1, "S").source:match("^@(.+/)")  or "./"
 
+-- main.kit.test.live.strict is true (the default is true): a live
+-- request that fails, or a live test missing an input it needs,
+-- fails the test.
+-- An account with no record for a test to read skips it either way.
+local LIVE_STRICT = true
+
+
 describe("DailyPostEntity", function()
   it("should create instance", function()
     local testsdk = sdk.test(nil, nil)
@@ -15,63 +22,16 @@ describe("DailyPostEntity", function()
     assert.is_not_nil(ent)
   end)
 
-  -- Feature #4: the entity stream(action, ...) method runs the op pipeline and
-  -- returns an iterator over result items. With the streaming feature active it
-  -- yields the feature's incremental output; otherwise it falls back to the
-  -- materialised list so stream always yields.
-  it("should stream", function()
-    local seed = {
-      entity = {
-        ["daily_post"] = {
-          s1 = { id = "s1" },
-          s2 = { id = "s2" },
-          s3 = { id = "s3" },
-        },
-      },
-    }
-
-    -- Fallback: streaming inactive -> yields the materialised list items.
-    local base = sdk.test(seed, nil)
-    local seen = {}
-    for item in base:DailyPost(nil):stream("list", nil, nil) do
-      table.insert(seen, item)
-    end
-    assert.are.equal(3, #seen)
-
-    -- Inbound: streaming active -> yields each item from the feature.
-    local config = require("config_shared")()
-    if type(config.feature) == "table" and config.feature.streaming ~= nil then
-      local streamsdk = sdk.test(seed, { feature = { streaming = { active = true } } })
-      local got = {}
-      for item in streamsdk:DailyPost(nil):stream("list", nil, nil) do
-        if vs.islist(item) then
-          for _, sub in ipairs(item) do
-            table.insert(got, sub)
-          end
-        else
-          table.insert(got, item)
-        end
-      end
-      assert.are.equal(3, #got)
-    end
-  end)
-
   it("should run basic flow", function()
     local setup = daily_post_basic_setup(nil)
     -- Per-op sdk-test-control.json skip.
     local _live = setup.live or false
-    for _, _op in ipairs({"list"}) do
+    for _, _op in ipairs({"load"}) do
       local _should_skip, _reason = runner.is_control_skipped("entityOp", "daily_post." .. _op, _live and "live" or "unit")
       if _should_skip then
         pending(_reason or "skipped via sdk-test-control.json")
         return
       end
-    end
-    -- The basic flow consumes synthetic IDs from the fixture. In live mode
-    -- without an *_ENTID env override, those IDs hit the live API and 4xx.
-    if setup.synthetic_only then
-      pending("live entity test uses synthetic IDs from fixture — set NAVALNYARCHIVE_TEST_DAILY_POST_ENTID JSON to run live")
-      return
     end
     local client = setup.client
 
@@ -83,13 +43,12 @@ describe("DailyPostEntity", function()
       daily_post_ref01_data = helpers.to_map(daily_post_ref01_data_raw[1][2])
     end
 
-    -- LIST
+    -- LOAD
     local daily_post_ref01_ent = client:DailyPost(nil)
-    local daily_post_ref01_match = {}
-
-    local daily_post_ref01_list_result, err = daily_post_ref01_ent:list(daily_post_ref01_match, nil)
+    local daily_post_ref01_match_dt0 = {}
+    local daily_post_ref01_data_dt0_loaded, err = daily_post_ref01_ent:load(daily_post_ref01_match_dt0, nil)
     assert.is_nil(err)
-    assert.is_table(daily_post_ref01_list_result)
+    assert.is_not_nil(daily_post_ref01_data_dt0_loaded)
 
   end)
 end)
@@ -123,9 +82,8 @@ function daily_post_basic_setup(extra)
     }
   )
 
-  -- Detect ENTID env override before envOverride consumes it. When live
-  -- mode is on without a real override, the basic test runs against synthetic
-  -- IDs from the fixture and 4xx's. Surface this so the test can skip.
+  -- Whether *_ENTID supplied the idmap, read before env_override consumes
+  -- it: without it, the ids a live flow binds are the fixture's synthetic ones.
   local entid_env_raw = os.getenv("NAVALNYARCHIVE_TEST_DAILY_POST_ENTID")
   local idmap_overridden = entid_env_raw ~= nil and entid_env_raw:match("^%s*{") ~= nil
 

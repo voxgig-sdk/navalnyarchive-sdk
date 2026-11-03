@@ -57,6 +57,7 @@ declare class Config {
             };
             optspec: {
                 clearTimer: string;
+                now: string;
                 setTimer: string;
             };
             strict: boolean;
@@ -77,7 +78,7 @@ declare class Config {
             fields: never[];
             name: string;
             op: {
-                list: {
+                load: {
                     input: string;
                     name: string;
                     points: {
@@ -96,6 +97,10 @@ declare class Config {
                         args: {};
                         select: {
                             $action: string;
+                        };
+                        response: {
+                            kind: string;
+                            media: string;
                         };
                     }[];
                 };

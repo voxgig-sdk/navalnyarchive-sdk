@@ -8,9 +8,9 @@
 export interface DailyPost {
 }
 
-export interface DailyPostListMatch {
+export interface DailyPostLoadMatch {
 
-  // Selects a custom action instead of the plain list:
+  // Selects a custom action instead of the plain load:
   //   'today'
   // The remaining keys are that action's own payload.
   $action?: string

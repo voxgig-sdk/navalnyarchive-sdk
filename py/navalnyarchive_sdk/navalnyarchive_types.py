@@ -20,5 +20,5 @@ class DailyPost(TypedDict):
     pass
 
 
-class DailyPostListMatch(TypedDict):
+class DailyPostLoadMatch(TypedDict):
     pass

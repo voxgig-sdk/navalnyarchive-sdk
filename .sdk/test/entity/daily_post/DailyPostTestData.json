@@ -1,9 +1,15 @@
 {
   "existing": {
     "daily_post": {
-      "DAILY_POST00": {},
-      "DAILY_POST01": {},
-      "DAILY_POST02": {}
+      "DAILY_POST00": {
+        "id": "DAILY_POST00"
+      },
+      "DAILY_POST01": {
+        "id": "DAILY_POST01"
+      },
+      "DAILY_POST02": {
+        "id": "DAILY_POST02"
+      }
     }
   },
   "new": {

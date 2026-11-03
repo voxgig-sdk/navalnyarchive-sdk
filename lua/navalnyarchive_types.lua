@@ -8,7 +8,7 @@
 
 ---@class DailyPost
 
----@class DailyPostListMatch
+---@class DailyPostLoadMatch
 
 local M = {}
 

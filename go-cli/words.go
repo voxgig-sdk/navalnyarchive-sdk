@@ -75,7 +75,7 @@ func runOp(client *sdk.NavalnyarchiveSDK, op string, query *eng.Value, entityAto
 
 // entityFor dispatches on the lowercase entity name. The generator
 // emits one `case "<name>":` per entity defined in the SDK model.
-func entityFor(client *sdk.NavalnyarchiveSDK, name string) (sdk.NavalnyarchiveEntity, error) {
+func entityFor(client *sdk.NavalnyarchiveSDK, name string) (sdk.NavalnyarchiveEntityBase, error) {
 	switch strings.ToLower(name) {
 	case "daily_post":
 		return client.DailyPost(nil), nil

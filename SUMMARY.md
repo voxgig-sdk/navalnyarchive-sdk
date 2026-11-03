@@ -1,6 +1,6 @@
 # Navalnyarchive API
 
-This API provides access to the content from navalny.com, including blogs, social media, projects, and photographs associated with Alexei Navalny. It allows developers to programmatically interact with the stored content.
+This API provides access to the content from navalny.com, including blogs, social media, projects, and photographs associated with Alexei Navalny. It allows developers to programmatically interact with the stored content. Response schema rewritten 2026-11-03 from a live probe: /ru/daily-posts/today/ answers one object &#123;date, editorial, material&#125;, not the &#123;count, date, posts&#125; list the earlier schema declared. Item shapes of tags, people, places and `related_materials` are unverified (empty when probed).
 
 ## Start here
 
@@ -16,7 +16,7 @@ An entity groups related API operations. An operation can have several routes wi
 
 Results: Successful response with daily posts.
 
-SDK operations: `list`.
+SDK operations: `load`.
 
 ### Route map
 
@@ -24,7 +24,7 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 
 | Entity | SDK operation | HTTP route | Authentication |
 | --- | --- | --- | --- |
-| DailyPost | `list` | `GET /ru/daily-posts/today/` | See reference |
+| DailyPost | `load` | `GET /ru/daily-posts/today/` | See reference |
 
 ## Connect to the API
 
@@ -72,8 +72,8 @@ Use the MCP server to expose supported API operations to an MCP client.
 
 Repository directory: `go-mcp/`. Not published. Build from the go-mcp directory.
 
-- `navalnyarchive_list`: List records for an entity. Supported entities: `daily_post`.
-- `navalnyarchive_load`: Load one record for an entity. No active entity supports this operation.
+- `navalnyarchive_list`: List records for an entity. No active entity supports this operation.
+- `navalnyarchive_load`: Load one record for an entity. Supported entities: `daily_post`.
 
 ## Operational features
 

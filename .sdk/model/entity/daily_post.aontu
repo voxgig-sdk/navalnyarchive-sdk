@@ -6,8 +6,8 @@ main: kit: entity: daily_post: {
 
   name: "daily_post"
   op: {
-    list: {
-      name: "list"
+    load: {
+      name: "load"
       points: [
         {
           co: {
@@ -19,6 +19,10 @@ main: kit: entity: daily_post: {
           o: "/ru/daily-posts/today/"
           q: {
             "$action": "today"
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {
@@ -33,7 +37,7 @@ main: kit: entity: daily_post: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body.posts`"
+            res: "`body`"
           }
         }
       ]

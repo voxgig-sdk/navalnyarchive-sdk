@@ -8,7 +8,7 @@ main: {
       contact: {
         url: "https://github.com/l0v3m0n3y/Navalnyarchive"
       }
-      description: "This API provides access to the content from navalny.com, including blogs, social media, projects, and photographs associated with Alexei Navalny. It allows developers to programmatically interact with the stored content."
+      description: "This API provides access to the content from navalny.com, including blogs, social media, projects, and photographs associated with Alexei Navalny. It allows developers to programmatically interact with the stored content. Response schema rewritten 2026-11-03 from a live probe: /ru/daily-posts/today/ answers one object {date, editorial, material}, not the {count, date, posts} list the earlier schema declared. Item shapes of tags, people, places and related_materials are unverified (empty when probed)."
       servers: [
         {
           description: "Production server"

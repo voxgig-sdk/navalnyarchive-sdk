@@ -99,9 +99,9 @@
           "fields": {},
           "name": "daily_post",
           "op": {
-            "list": {
+            "load": {
               "input": "data",
-              "name": "list",
+              "name": "load",
               "points": [
                 {
                   "a": true,
@@ -118,6 +118,10 @@
                     "$action": "today"
                   },
                   "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
                   "s": [
                     {
                       "lit": "ru"
@@ -131,7 +135,7 @@
                   ],
                   "t": {
                     "req": "`reqdata`",
-                    "res": "`body.posts`"
+                    "res": "`body`"
                   }
                 }
               ]
@@ -464,6 +468,7 @@
             },
             "optspec": {
               "clearTimer": "`$FUNCTION`",
+              "now": "`$FUNCTION`",
               "setTimer": "`$FUNCTION`"
             },
             "strict": false
@@ -564,15 +569,19 @@
             {
               "a": true,
               "d": {},
-              "i": {},
+              "i": {
+                "ref": "daily_post_ref01",
+                "srcdatavar": "daily_post_ref01_data",
+                "suffix": "_dt0"
+              },
               "m": {},
-              "o": "list",
+              "o": "load",
               "s": [],
               "v": [
                 {
-                  "apply": "ItemExists",
+                  "apply": "TextFieldMark",
                   "def": {
-                    "ref": "daily_post_ref01"
+                    "mark": "Mark01-daily_post_ref01"
                   }
                 }
               ]
@@ -585,7 +594,7 @@
         "contact": {
           "url": "https://github.com/l0v3m0n3y/Navalnyarchive"
         },
-        "description": "This API provides access to the content from navalny.com, including blogs, social media, projects, and photographs associated with Alexei Navalny. It allows developers to programmatically interact with the stored content.",
+        "description": "This API provides access to the content from navalny.com, including blogs, social media, projects, and photographs associated with Alexei Navalny. It allows developers to programmatically interact with the stored content. Response schema rewritten 2026-11-03 from a live probe: /ru/daily-posts/today/ answers one object {date, editorial, material}, not the {count, date, posts} list the earlier schema declared. Item shapes of tags, people, places and related_materials are unverified (empty when probed).",
         "meta_source": "https://www.freepublicapis.com",
         "servers": [
           {
@@ -602,7 +611,7 @@
       "optspec": {
         "allow": {
           "method": "GET,PUT,POST,PATCH,DELETE,OPTIONS",
-          "op": "create,update,load,list,remove,command,direct,graphql"
+          "op": "create,update,patch,load,list,remove,command,direct,graphql"
         },
         "apikey": "",
         "auth": {
@@ -655,6 +664,11 @@
         "top": {
           "active": true
         }
+      },
+      "publisher": {
+        "name": "",
+        "security": "",
+        "url": ""
       },
       "repo": {
         "host": "github.com",
@@ -885,7 +899,10 @@
             "version": "0.0.1"
           },
           "superseded": [],
-          "title": "Go MCP server"
+          "title": "Go MCP server",
+          "tool": {
+            "write": false
+          }
         },
         "lua": {
           "active": true,
@@ -1262,6 +1279,17 @@
           "base": "",
           "strict": true
         }
+      },
+      "text": {
+        "about_md": "",
+        "docs_url": "",
+        "entity_desc": {},
+        "homepage": "",
+        "meta_source": "",
+        "summary": "",
+        "tagline": "",
+        "title": "",
+        "website": ""
       }
     }
   },

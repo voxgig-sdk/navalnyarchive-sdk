@@ -71,6 +71,7 @@ func MakeConfig() map[string]any {
 				},
 				"optspec": map[string]any{
 					"clearTimer": "`$FUNCTION`",
+					"now": "`$FUNCTION`",
 					"setTimer": "`$FUNCTION`",
 				},
 				"strict": false,
@@ -91,9 +92,9 @@ func MakeConfig() map[string]any {
 				"fields": []any{},
 				"name": "daily_post",
 				"op": map[string]any{
-					"list": map[string]any{
+					"load": map[string]any{
 						"input": "data",
-						"name": "list",
+						"name": "load",
 						"points": []any{
 							map[string]any{
 								"kind": "http",
@@ -118,11 +119,15 @@ func MakeConfig() map[string]any {
 								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body.posts`",
+									"res": "`body`",
 								},
 								"args": map[string]any{},
 								"select": map[string]any{
 									"$action": "today",
+								},
+								"response": map[string]any{
+									"kind": "json",
+									"media": "application/json",
 								},
 							},
 						},

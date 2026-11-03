@@ -19,14 +19,15 @@ make build
 export NAVALNYARCHIVE_APIKEY=sk_live_xxx
 
 # 4. Each command line is ONE boru expression, run against the API:
-./navalnyarchive-cli list daily_post
+./navalnyarchive-cli load 1 daily_post            # {id:1} shorthand
+./navalnyarchive-cli load '{id:1}' daily_post       # explicit match map
 
 # 5. Override the API base URL for a single call
-NAVALNYARCHIVE_BASE=https://api.example.com ./navalnyarchive-cli list daily_post
+NAVALNYARCHIVE_BASE=https://api.example.com ./navalnyarchive-cli load 1 daily_post
 
 # 6. No arguments -> interactive REPL
 ./navalnyarchive-cli
-navalnyarchive> list daily_post
+navalnyarchive> load 1 daily_post
 navalnyarchive> /quit
 ```
 
@@ -52,7 +53,7 @@ navalnyarchive> /quit
    arguments to open the REPL):
 
    ```sh
-   ./dist/*/navalnyarchive-cli list daily_post
+   ./dist/*/navalnyarchive-cli load 1 daily_post
    ```
 
 4. **Go interactive.** Run the binary with no arguments to open the REPL, then
@@ -62,14 +63,15 @@ That is the whole loop: *build → set key → evaluate boru expressions*.
 
 ## How-to guides
 
-### List the records of an entity
+### Load a single record
 
 ```sh
-./navalnyarchive-cli list daily_post
+./navalnyarchive-cli load 1 daily_post          # scalar shorthand for {id:1}
+./navalnyarchive-cli load '{id:1}' daily_post     # explicit match map
 ```
 
-`list <entity>` returns the first page of records. `<entity>` is a bareword —
-it is auto-quoted as an boru atom, so no quotes are needed.
+The query is either a **scalar** (`1`, treated as `{id:1}`) or a **match map**
+(`{id:1}`, `{slug:"acme"}`). Quote the map so your shell passes it through intact.
 
 ### Authenticate and choose an environment
 
@@ -78,7 +80,7 @@ Configuration is read from the environment — nothing is written to disk:
 ```sh
 export NAVALNYARCHIVE_APIKEY=sk_live_xxx            # API key
 export NAVALNYARCHIVE_BASE=https://api.example.com  # optional: override the API base URL
-./navalnyarchive-cli list daily_post
+./navalnyarchive-cli load 1 daily_post
 ```
 
 Both are injectable by a secrets vault, so the key never has to be typed inline.
@@ -90,7 +92,7 @@ evaluated as its own boru expression:
 
 ```text
 $ ./navalnyarchive-cli
-navalnyarchive> list daily_post
+navalnyarchive> load 1 daily_post
 navalnyarchive> /help
 navalnyarchive> /quit
 ```
@@ -115,7 +117,7 @@ The CLI registers these boru words, each bound to the SDK:
 
 | Word     | Signatures                                    | Returns                        |
 |----------|-----------------------------------------------|--------------------------------|
-| `list`   | `list <entity>` · `list <query> <entity>`     | First page of records          |
+| `load`   | `load <entity>` · `load <query> <entity>`     | A single record                |
 
 - `<entity>` is a bareword, auto-quoted as an boru atom (e.g. `daily_post`).
 - `<query>` is either a **Map** (`{id:1}`) or a **Scalar** (`1`, treated as

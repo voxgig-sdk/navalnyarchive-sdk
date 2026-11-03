@@ -96,6 +96,7 @@ def make_config():
         },
         "optspec": {
           "clearTimer": "`$FUNCTION`",
+          "now": "`$FUNCTION`",
           "setTimer": "`$FUNCTION`",
         },
         "strict": False,
@@ -116,9 +117,9 @@ def make_config():
         "fields": [],
         "name": "daily_post",
         "op": {
-          "list": {
+          "load": {
             "input": "data",
-            "name": "list",
+            "name": "load",
             "points": [
               {
                 "kind": "http",
@@ -143,11 +144,15 @@ def make_config():
                 "rename": {},
                 "transform": {
                   "req": "`reqdata`",
-                  "res": "`body.posts`",
+                  "res": "`body`",
                 },
                 "args": {},
                 "select": {
                   "$action": "today",
+                },
+                "response": {
+                  "kind": "json",
+                  "media": "application/json",
                 },
               },
             ],

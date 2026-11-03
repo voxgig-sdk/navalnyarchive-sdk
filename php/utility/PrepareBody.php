@@ -3,11 +3,16 @@ declare(strict_types=1);
 
 // Navalnyarchive SDK utility: prepare_body
 
+require_once __DIR__ . '/Media.php';
+
 class NavalnyarchivePrepareBody
 {
     public static function call(NavalnyarchiveContext $ctx): mixed
     {
         if ($ctx->op->input === 'data') {
+            if (NavalnyarchiveMedia::isRawRequest($ctx->point)) {
+                return NavalnyarchiveMedia::rawBody($ctx->reqdata);
+            }
             $body = ($ctx->utility->transform_request)($ctx);
             // PHP cannot tell an empty map from an empty list, and this
             // vendored struct answers [] where the canonical transform

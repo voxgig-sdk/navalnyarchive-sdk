@@ -10,17 +10,20 @@ import (
 	"github.com/voxgig-sdk/navalnyarchive-sdk/go/core"
 )
 
+// main.kit.test.live.strict is true (the default is true): a live
+// request that fails, or a live test missing an input it needs,
+// fails the test.
+// An account with no record for a test to read skips it either way.
+const daily_postDirectLiveStrict = true
+
 func TestDailyPostDirect(t *testing.T) {
-	t.Run("direct-list-daily_post", func(t *testing.T) {
-		setup := daily_postDirectSetup([]any{
-			map[string]any{"id": "direct01"},
-			map[string]any{"id": "direct02"},
-		})
+	t.Run("direct-load-daily_post", func(t *testing.T) {
+		setup := daily_postDirectSetup(map[string]any{"id": "direct01"})
 		_mode := "unit"
 		if setup.live {
 			_mode = "live"
 		}
-		if _shouldSkip, _reason := isControlSkipped("direct", "direct-list-daily_post", _mode); _shouldSkip {
+		if _shouldSkip, _reason := isControlSkipped("direct", "direct-load-daily_post", _mode); _shouldSkip {
 			if _reason == "" {
 				_reason = "skipped via sdk-test-control.json"
 			}
@@ -31,24 +34,19 @@ func TestDailyPostDirect(t *testing.T) {
 
 
 		result, err := client.Direct(map[string]any{
-			"path":   "ru/daily-posts/today",
+			"path":   "ru/daily-posts/today/",
 			"method": "GET",
 			"params": map[string]any{},
 		})
 		if setup.live {
-			// Live-mode leniency is a model decision
-			// (main.kit.test.live.strict): synthetic IDs 4xx constantly
-			// against an arbitrary public API, so the default SKIPS here.
-			// A project that owns its test server sets strict and FAILS.
 			if err != nil {
-				t.Fatalf("list call failed (likely synthetic IDs against live API): %v", err)
+				liveMiss(t, daily_postDirectLiveStrict, "Live load failed: %v", err)
 			}
-			if result["ok"] != true {
-				t.Fatalf("list call not ok (likely synthetic IDs against live API): %v", result)
+			if status := core.ToInt(result["status"]); result["ok"] != true || status < 200 || status >= 300 {
+				liveMiss(t, daily_postDirectLiveStrict, "Live load failed: %s", liveDescribe(result))
 			}
-			status := core.ToInt(result["status"])
-			if status < 200 || status >= 300 {
-				t.Fatalf("expected 2xx status, got %v", result["status"])
+			if result["data"] == nil {
+				liveMiss(t, daily_postDirectLiveStrict, "Live load returned no data: %s", liveDescribe(result))
 			}
 		} else {
 			if err != nil {
@@ -60,19 +58,28 @@ func TestDailyPostDirect(t *testing.T) {
 			if core.ToInt(result["status"]) != 200 {
 				t.Fatalf("expected status 200, got %v", result["status"])
 			}
+			if result["data"] == nil {
+				t.Fatal("expected data to be non-nil")
+			}
 		}
 
 		if !setup.live {
-			if dataList, ok := result["data"].([]any); ok {
-				if len(dataList) != 2 {
-					t.Fatalf("expected 2 items, got %d", len(dataList))
+			if dataMap, ok := result["data"].(map[string]any); ok {
+				if dataMap["id"] != "direct01" {
+					t.Fatalf("expected data.id to be direct01, got %v", dataMap["id"])
 				}
-			} else {
-				t.Fatalf("expected data to be an array, got %T", result["data"])
 			}
 
 			if len(*setup.calls) != 1 {
 				t.Fatalf("expected 1 call, got %d", len(*setup.calls))
+			}
+			call := (*setup.calls)[0]
+			if initMap, ok := call["init"].(map[string]any); ok {
+				if initMap["method"] != "GET" {
+					t.Fatalf("expected method GET, got %v", initMap["method"])
+				}
+			}
+			if _, ok := call["url"].(string); ok {
 			}
 		}
 	})

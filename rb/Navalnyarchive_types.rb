@@ -12,7 +12,7 @@
 class DailyPost
 end
 
-# Request payload for DailyPost#list.
-class DailyPostListMatch
+# Request payload for DailyPost#load.
+class DailyPostLoadMatch
 end
 

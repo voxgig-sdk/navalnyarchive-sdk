@@ -102,6 +102,7 @@ class Config {
       },
       "optspec": {
         "clearTimer": "`$FUNCTION`",
+        "now": "`$FUNCTION`",
         "setTimer": "`$FUNCTION`"
       },
       "strict": false,
@@ -132,9 +133,9 @@ class Config {
       "fields": [],
       "name": "daily_post",
       "op": {
-        "list": {
+        "load": {
           "input": "data",
-          "name": "list",
+          "name": "load",
           "points": [
             {
               "kind": "http",
@@ -159,11 +160,15 @@ class Config {
               "rename": {},
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body.posts`"
+                "res": "`body`"
               },
               "args": {},
               "select": {
                 "$action": "today"
+              },
+              "response": {
+                "kind": "json",
+                "media": "application/json"
               }
             }
           ]

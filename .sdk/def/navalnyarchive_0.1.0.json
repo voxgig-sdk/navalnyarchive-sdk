@@ -2,7 +2,7 @@
   "openapi": "3.0.3",
   "info": {
     "title": "Navalnyarchive API",
-    "description": "This API provides access to the content from navalny.com, including blogs, social media, projects, and photographs associated with Alexei Navalny. It allows developers to programmatically interact with the stored content.",
+    "description": "This API provides access to the content from navalny.com, including blogs, social media, projects, and photographs associated with Alexei Navalny. It allows developers to programmatically interact with the stored content. Response schema rewritten 2026-11-03 from a live probe: /ru/daily-posts/today/ answers one object {date, editorial, material}, not the {count, date, posts} list the earlier schema declared. Item shapes of tags, people, places and related_materials are unverified (empty when probed).",
     "version": "1.0.0",
     "contact": {
       "url": "https://github.com/l0v3m0n3y/Navalnyarchive"
@@ -30,53 +30,104 @@
               "application/json": {
                 "schema": {
                   "type": "object",
+                  "description": "The archive entry for today's date: one editorial and the material it reproduces.",
                   "properties": {
-                    "posts": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "id": {
-                            "type": "string",
-                            "description": "Unique identifier for the post"
-                          },
-                          "title": {
-                            "type": "string",
-                            "description": "Title of the post"
-                          },
-                          "content": {
-                            "type": "string",
-                            "description": "Content of the post"
-                          },
-                          "date": {
-                            "type": "string",
-                            "format": "date-time",
-                            "description": "Publication date of the post"
-                          },
-                          "author": {
-                            "type": "string",
-                            "description": "Author of the post"
-                          },
-                          "source": {
-                            "type": "string",
-                            "description": "Source platform (blog, social media, etc.)"
-                          },
-                          "url": {
-                            "type": "string",
-                            "format": "uri",
-                            "description": "Original URL of the post"
-                          }
-                        }
-                      }
-                    },
-                    "count": {
-                      "type": "integer",
-                      "description": "Total number of posts returned"
-                    },
                     "date": {
                       "type": "string",
                       "format": "date",
-                      "description": "Date for which posts are retrieved"
+                      "example": "2026-11-03"
+                    },
+                    "editorial": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "integer"
+                        },
+                        "slug": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "preview_image": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "description": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "quote": {
+                          "type": "string"
+                        },
+                        "created_at": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "updated_at": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "sections": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "type": {
+                                "type": "string"
+                              },
+                              "text": {
+                                "type": "string"
+                              },
+                              "url": {
+                                "type": "string"
+                              },
+                              "author": {
+                                "type": "string"
+                              },
+                              "description": {
+                                "type": "string"
+                              },
+                              "material_id": {
+                                "type": "integer"
+                              },
+                              "entities": {
+                                "type": "array",
+                                "items": {}
+                              }
+                            }
+                          }
+                        },
+                        "tags": {
+                          "type": "array",
+                          "items": {}
+                        },
+                        "people": {
+                          "type": "array",
+                          "items": {}
+                        },
+                        "places": {
+                          "type": "array",
+                          "items": {}
+                        },
+                        "related_materials": {
+                          "type": "array",
+                          "items": {}
+                        }
+                      }
+                    },
+                    "material": {
+                      "type": "object",
+                      "properties": {
+                        "kind": {
+                          "type": "string",
+                          "example": "twitter_day"
+                        },
+                        "date_published": {
+                          "type": "string",
+                          "format": "date"
+                        }
+                      }
                     }
                   }
                 }

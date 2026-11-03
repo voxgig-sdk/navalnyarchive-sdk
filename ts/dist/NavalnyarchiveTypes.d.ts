@@ -1,6 +1,6 @@
 export interface DailyPost {
 }
-export interface DailyPostListMatch {
+export interface DailyPostLoadMatch {
     $action?: string;
     [action: string]: any;
 }

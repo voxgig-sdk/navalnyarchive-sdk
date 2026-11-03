@@ -13,7 +13,12 @@ type Context = core.Context
 type Utility = core.Utility
 type Feature = core.Feature
 type Entity = core.Entity
-type NavalnyarchiveEntity = core.NavalnyarchiveEntity
+type NavalnyarchiveEntityBase = core.NavalnyarchiveEntityBase
+
+// Deprecated: use NavalnyarchiveEntityBase.
+type NavalnyarchiveEntity = core.NavalnyarchiveEntityBase
+
+type StreamItem = core.StreamItem
 type FetcherFunc = core.FetcherFunc
 type Spec = core.Spec
 type Result = core.Result
@@ -41,7 +46,7 @@ func init() {
 	core.NewTimeoutFeatureFunc = func() core.Feature {
 		return feature.NewTimeoutFeature()
 	}
-	core.NewDailyPostEntityFunc = func(client *core.NavalnyarchiveSDK, entopts map[string]any) core.NavalnyarchiveEntity {
+	core.NewDailyPostEntityFunc = func(client *core.NavalnyarchiveSDK, entopts map[string]any) core.NavalnyarchiveEntityBase {
 		return entity.NewDailyPostEntity(client, entopts)
 	}
 }

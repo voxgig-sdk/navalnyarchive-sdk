@@ -93,6 +93,7 @@ class NavalnyarchiveConfig
           ],
           'optspec' => [
             'clearTimer' => '`$FUNCTION`',
+            'now' => '`$FUNCTION`',
             'setTimer' => '`$FUNCTION`',
           ],
           'strict' => false,
@@ -113,9 +114,9 @@ class NavalnyarchiveConfig
           'fields' => [],
           'name' => 'daily_post',
           'op' => [
-            'list' => [
+            'load' => [
               'input' => 'data',
-              'name' => 'list',
+              'name' => 'load',
               'points' => [
                 [
                   'kind' => 'http',
@@ -140,11 +141,15 @@ class NavalnyarchiveConfig
                   'rename' => [],
                   'transform' => [
                     'req' => '`reqdata`',
-                    'res' => '`body.posts`',
+                    'res' => '`body`',
                   ],
                   'args' => [],
                   'select' => [
                     '$action' => 'today',
+                  ],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
                   ],
                 ],
               ],
